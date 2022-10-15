@@ -27,10 +27,6 @@ class food(QtWidgets.QMainWindow):
     def people(self):
         avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
         avg(avgsql)
-        # thread = Thread(target=avg,
-        #                 args=(avgsql,)
-        #                 )
-        # thread.start()
 
 
 
