@@ -126,13 +126,13 @@ def rate(sql):
 
 if __name__ == '__main__':
     # 人均消费
-    # avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-    # avg(avgsql)
+    avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    avg(avgsql)
     # 总消费
-    sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-    # sum(sumsql)
+    # sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    # Sum(sumsql)
     # 百分比消费
-    rate(sumsql)
+    #rate(sumsql)
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
