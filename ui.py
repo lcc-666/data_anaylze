@@ -26,34 +26,27 @@ class food(QtWidgets.QMainWindow):
 
     def people(self):
         avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-        thread = Thread(target=avg,
-                        args=(avgsql,)
-                        )
-        thread.start()
+        avg(avgsql)
+        # thread = Thread(target=avg,
+        #                 args=(avgsql,)
+        #                 )
+        # thread.start()
 
 
 
     def all(self):
         sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-        thread = Thread(target=Sum,
-                        args=(sumsql,)
-                        )
-        thread.start()
+        Sum(sumsql)
+
 
     def four(self):
         daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-        thread = Thread(target=avgday,
-                        args=(daysql,)
-                        )
-        thread.start()
+        avgday(daysql)
 
 
     def rate(self):
         sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-        thread = Thread(target=rate,
-                        args=(sumsql, )
-                        )
-        thread.start()
+        rate(sumsql)
 
 
 
