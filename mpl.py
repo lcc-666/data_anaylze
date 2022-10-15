@@ -1,9 +1,18 @@
 from sql import getsql
+
+import matplotlib
+matplotlib.use('TkAgg')
+
 import matplotlib.pyplot as plt
+
+import matplotlib as mpl
+
+mpl.rcParams['font.sans-serif'] = ['SimHei']
+mpl.rcParams['font.serif'] = ['SimHei']
 
 from matplotlib.font_manager import FontProperties
 
-FontProperties(fname='simhei.ttf')
+font=FontProperties(fname='simhei.ttf')
 
 
 # 柱状图模版
@@ -94,17 +103,16 @@ def avgday(sql):
     y1 = one.values()
     y2 = two.values()
     y3 = three.values()
-
     y4 = four.values()
     y5 = five.values()
     y6 = teacher.values()
 
-    plt.plot(x, y1)
-    plt.plot(x, y2)
-    plt.plot(x, y3)
-    plt.plot(x, y4)
-    plt.plot(x, y5)
-    plt.plot(x, y6)
+    plt.plot(x, list(y1))
+    plt.plot(x, list(y2))
+    plt.plot(x, list(y3))
+    plt.plot(x, list(y4))
+    plt.plot(x, list(y5))
+    plt.plot(x, list(y6))
 
     plt.xlabel("四月食堂消费")
     plt.ylabel("食堂单日消费金额")
