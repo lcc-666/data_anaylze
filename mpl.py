@@ -1,6 +1,7 @@
 from sql import getsql
 
 import matplotlib
+
 matplotlib.use('TkAgg')
 
 import matplotlib.pyplot as plt
@@ -12,7 +13,7 @@ mpl.rcParams['font.serif'] = ['SimHei']
 
 from matplotlib.font_manager import FontProperties
 
-font=FontProperties(fname='simhei.ttf')
+font = FontProperties(fname='simhei.ttf')
 
 
 # 柱状图模版
@@ -107,16 +108,25 @@ def avgday(sql):
     y5 = five.values()
     y6 = teacher.values()
 
-    plt.plot(x, list(y1))
-    plt.plot(x, list(y2))
-    plt.plot(x, list(y3))
-    plt.plot(x, list(y4))
-    plt.plot(x, list(y5))
-    plt.plot(x, list(y6))
+    plt.figure(figsize=(12,8))
+
+    plt.plot(x, list(y1), label="第一食堂")
+    plt.plot(x, list(y2), label="第二食堂")
+    plt.plot(x, list(y3), label="第三食堂")
+    plt.plot(x, list(y4), label="第四食堂")
+    plt.plot(x, list(y5), label="第五食堂")
+    plt.plot(x, list(y6), label="教师食堂")
 
     plt.xlabel("四月食堂消费")
     plt.ylabel("食堂单日消费金额")
 
+    s="每逢周末以及假期,第二,三,四,五食堂,消费金额明显下滑\n食堂应提前减少菜品储备,降低浪费."
+    plt.annotate(s,(5,2000),(9,800),arrowprops=dict(width=3,headwidth=5,headlength=5),fontsize=20)
+    plt.annotate("", (13, 7000), (11, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+    plt.annotate("", (20, 8000), (14, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+    plt.annotate("", (27, 7000), (17, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+
+    plt.legend()
     plt.show()
 
 
@@ -134,13 +144,13 @@ def rate(sql):
 
 if __name__ == '__main__':
     # 人均消费
-    avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-    avg(avgsql)
+    # avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    # avg(avgsql)
     # 总消费
     # sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # Sum(sumsql)
     # 百分比消费
-    #rate(sumsql)
+    # rate(sumsql)
     # 日均消费
-    # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-    # avgday(daysql)
+    daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    avgday(daysql)
