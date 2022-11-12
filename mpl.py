@@ -1,3 +1,5 @@
+import base64
+
 from sql import getsql
 
 import matplotlib
@@ -14,6 +16,8 @@ mpl.rcParams['font.serif'] = ['SimHei']
 from matplotlib.font_manager import FontProperties
 
 font = FontProperties(fname='simhei.ttf')
+
+from io import BytesIO
 
 
 # 柱状图模版
@@ -139,7 +143,19 @@ def rate(sql):
     ex = [0.05 for _ in range(6)]
     plt.pie(money_dict.values(), explode=ex, labels=money_dict.keys(), autopct='%1.1f%%')
 
-    plt.show()
+    #plt.show()
+    figfile = BytesIO()
+    plt.savefig(figfile, format='png')
+    figfile.seek(0)
+    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+
+    # 保存为.html
+    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    filename = 'png.html'
+    with open(filename, 'w') as f:
+        f.write(html)
+
 
 
 if __name__ == '__main__':
@@ -147,10 +163,10 @@ if __name__ == '__main__':
     # avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avg(avgsql)
     # 总消费
-    # sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # Sum(sumsql)
     # 百分比消费
-    # rate(sumsql)
+    rate(sumsql)
     # 日均消费
-    daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
-    avgday(daysql)
+    # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    # avgday(daysql)

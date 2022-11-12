@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="">
+    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="简单修改">
       <change afterPath="$PROJECT_DIR$/relevance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_anaylze.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_anaylze.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpl.py" beforeDir="false" afterPath="$PROJECT_DIR$/mpl.py" afterDir="false" />
     </list>
@@ -39,6 +40,28 @@
   }
 }</component>
   <component name="RunManager" selected="Python.mpl">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="data_anaylze" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="mpl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="data_anaylze" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,7 +181,18 @@
       <workItem from="1667565155586" duration="372000" />
       <workItem from="1667620562366" duration="442000" />
       <workItem from="1667866290358" duration="14000" />
+      <workItem from="1667963288751" duration="1042000" />
+      <workItem from="1667986643424" duration="1556000" />
+      <workItem from="1668217832405" duration="6710000" />
     </task>
+    <task id="LOCAL-00001" summary="简单修改">
+      <created>1667963316710</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667963316710</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,9 +209,13 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="简单修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="简单修改" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1667620688092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1668218791542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$ui.coverage" NAME="ui Coverage Results" MODIFIED="1666962337716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/data_anaylze$relevance.coverage" NAME="relevance Coverage Results" MODIFIED="1667042872969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_anaylze$relevance.coverage" NAME="relevance Coverage Results" MODIFIED="1668226602515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
