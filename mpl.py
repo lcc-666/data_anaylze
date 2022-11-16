@@ -156,6 +156,31 @@ def rate(sql):
     with open(filename, 'w') as f:
         f.write(html)
 
+def sex():
+    sql="""
+    SELECT *
+    FROM `data`.sex_money;
+    """
+    man=364992
+    woman=462509
+    ex = [0.05 for _ in range(2)]
+    plt.pie(
+        [man,woman],
+        explode=ex,
+        labels=["男","女"],
+        autopct='%.2f%%')
+    # plt.show()
+    figfile = BytesIO()
+    plt.savefig(figfile, format='png')
+    figfile.seek(0)
+    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+
+    # 保存为.html
+    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    filename = './html/sex.html'
+    with open(filename, 'w') as f:
+        f.write(html)
 
 
 if __name__ == '__main__':
@@ -163,10 +188,13 @@ if __name__ == '__main__':
     # avgsql = "SELECT AVG(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avg(avgsql)
     # 总消费
-    sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
+    # sumsql = "SELECT SUM(Money) ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # Sum(sumsql)
     # 百分比消费
-    rate(sumsql)
+    # rate(sumsql)
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
+
+
+    sex()
