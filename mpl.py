@@ -124,14 +124,27 @@ def avgday(sql):
     plt.xlabel("四月食堂消费")
     plt.ylabel("食堂单日消费金额")
 
-    s="每逢周末以及假期,第二,三,四,五食堂,消费金额明显下滑\n食堂应提前减少菜品储备,降低浪费."
-    plt.annotate(s,(5,2000),(9,800),arrowprops=dict(width=3,headwidth=5,headlength=5),fontsize=20)
-    plt.annotate("", (13, 7000), (11, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
-    plt.annotate("", (20, 8000), (14, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
-    plt.annotate("", (27, 7000), (17, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+    # s="每逢周末以及假期,第二,三,四,五食堂,消费金额明显下滑\n食堂应提前减少菜品储备,降低浪费."
+    # plt.annotate(s,(5,2000),(9,800),arrowprops=dict(width=3,headwidth=5,headlength=5),fontsize=20)
+    # plt.annotate("", (13, 7000), (11, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+    # plt.annotate("", (20, 8000), (14, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
+    # plt.annotate("", (27, 7000), (17, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
 
     plt.legend()
-    plt.show()
+    #plt.show()
+
+    figfile = BytesIO()
+    plt.savefig(figfile, format='png')
+    figfile.seek(0)
+    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+
+    # 保存为.html
+    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    filename = './html/dayavg.html'
+    with open(filename, 'w') as f:
+        f.write(html)
+
 
 
 # 食堂消费占比
@@ -182,6 +195,19 @@ def sex():
     with open(filename, 'w') as f:
         f.write(html)
 
+def major():
+    sql="""
+    SELECT SUM(Money) ,Dept 
+    FROM `data`.sex_marjor  sm 
+    GROUP BY Major ;
+    """
+    data={}
+    f=open("./major.txt","r",encoding="utf8").readlines()
+    for item in f:
+        print(item.strip().split("\t"))
+        data[item.strip().split("\t")[-1]]=eval(item.strip().split("\t")[0])
+
+
 
 if __name__ == '__main__':
     # 人均消费
@@ -195,6 +221,4 @@ if __name__ == '__main__':
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
-
-
-    sex()
+    major()

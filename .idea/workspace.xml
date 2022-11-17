@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="添加相关性算法分析">
+    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="添加性别消费分析">
+      <change afterPath="$PROJECT_DIR$/html/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/major.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/food.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/init.ui" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mpl.py" beforeDir="false" afterPath="$PROJECT_DIR$/mpl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/png.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/relevance.py" beforeDir="false" afterPath="$PROJECT_DIR$/relevance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -32,6 +36,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -187,7 +192,8 @@
       <workItem from="1668258161985" duration="243000" />
       <workItem from="1668428411208" duration="107000" />
       <workItem from="1668565188174" duration="2496000" />
-      <workItem from="1668597554350" duration="3539000" />
+      <workItem from="1668597554350" duration="4793000" />
+      <workItem from="1668653941073" duration="1324000" />
     </task>
     <task id="LOCAL-00001" summary="简单修改">
       <created>1667963316710</created>
@@ -210,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668597609334</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加性别消费分析">
+      <created>1668603044643</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668603044643</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,10 +243,29 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="简单修改" />
     <MESSAGE value="添加相关性算法分析" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加相关性算法分析" />
+    <MESSAGE value="添加性别消费分析" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加性别消费分析" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mpl.py</url>
+          <line>208</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1668602634006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1668655244171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$ui.coverage" NAME="ui Coverage Results" MODIFIED="1666962337716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$relevance.coverage" NAME="relevance Coverage Results" MODIFIED="1668600760486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
