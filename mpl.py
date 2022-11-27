@@ -19,6 +19,14 @@ font = FontProperties(fname='simhei.ttf')
 
 from io import BytesIO
 
+import pandas as pd
+
+from relevance import conn
+
+import copy
+
+
+
 
 # 柱状图模版
 def muban(res):
@@ -207,6 +215,47 @@ def major():
         print(item.strip().split("\t"))
         data[item.strip().split("\t")[-1]]=eval(item.strip().split("\t")[0])
 
+# 教学楼通过和食堂的关系
+def money_learn():
+    Dept_sql="""
+    SELECT DISTINCT Dept 
+    FROM `data`.money_learn ml ;
+    """
+    Address_sql="""
+    SELECT DISTINCT SUBSTRING(Address,1,CHAR_LENGTH(Address)-4) as Address 
+    FROM `data`.money_learn ml ;
+    """
+    Dept=pd.read_sql(Dept_sql,conn)
+    Address=pd.read_sql(Address_sql,conn)
+    food=[]
+    Dept_list={}
+    map={}
+    count = 0
+    for Add in Address["Address"]:
+        Dept_list[Add]=0
+
+    for item in Dept["Dept"]:
+        food.append({item:copy.deepcopy(Dept_list)})
+        map[item]=count
+        count+=1
+
+
+    data_sql="""
+    SELECT Dept, SUBSTRING(Address,1,CHAR_LENGTH(Address)-4) as Address  
+    FROM `data`.money_learn
+    limit 10000;
+    """
+    data=pd.read_sql(data_sql,conn)
+    for item in zip(data["Dept"],data["Address"]):
+        food[map[item[0]]][item[0]][item[1]] += 1
+    print()
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -221,4 +270,5 @@ if __name__ == '__main__':
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
-    major()
+    # major()
+    money_learn()

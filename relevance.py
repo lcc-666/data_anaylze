@@ -16,10 +16,12 @@ def corr(avg_sql, sum_sql, conn, name):
 
 
 conn = pymysql.connect(
-    host="www.chaogezuishuai.top",
-    user="chao", password="CHAOGE",
+    # host="www.chaogezuishuai.top",
+    host="127.0.0.1",
+    # user="chao", password="CHAOGE",
+    user="root",password="123456",
     database="data",
-    charset="gbk")
+    charset="utf8")
 
 
 # for item in ["第一食堂", "第二食堂", "第三食堂", "第四食堂", "第五食堂", "教师食堂"]:
