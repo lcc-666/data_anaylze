@@ -178,42 +178,52 @@ def rate(sql):
         f.write(html)
 
 def sex():
-    sql="""
-    SELECT *
-    FROM `data`.sex_money;
+    sex_sql="""
+      SELECT Sex,SUM(Money) as Money
+    FROM `data`.sex_marjor sm 
+   Group By Sex;
     """
-    man=364992
-    woman=462509
+    sex_data=pd.read_sql(sex_sql,conn)
+    man=sex_data["Money"][0]
+    woman=sex_data["Money"][1]
     ex = [0.05 for _ in range(2)]
     plt.pie(
         [man,woman],
         explode=ex,
-        labels=["男","女"],
+        labels=list(sex_data["Sex"]),
         autopct='%.2f%%')
-    # plt.show()
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)
-    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
-    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+    plt.show()
+    # figfile = BytesIO()
+    # plt.savefig(figfile, format='png')
+    # figfile.seek(0)
+    # figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    # figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
 
     # 保存为.html
-    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
-    filename = './html/sex.html'
-    with open(filename, 'w') as f:
-        f.write(html)
+    # html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    # filename = './html/sex.html'
+    # with open(filename, 'w') as f:
+    #     f.write(html)
 
+# 专业消费占比
 def major():
-    sql="""
-    SELECT SUM(Money) ,Dept 
+    major_sql="""
+    SELECT SUM(Money) as Money ,Major  
     FROM `data`.sex_marjor  sm 
-    GROUP BY Major ;
+    GROUP BY Major 
+   ORDER BY Money 
+  LIMIT 10;
     """
-    data={}
-    f=open("./major.txt","r",encoding="utf8").readlines()
-    for item in f:
-        print(item.strip().split("\t"))
-        data[item.strip().split("\t")[-1]]=eval(item.strip().split("\t")[0])
+    data=pd.read_sql(major_sql,conn)
+    major_data=list(zip(data["Money"],data["Major"]))
+    muban(major_data)
+    plt.title("山西农业大学各专业食堂消费")
+    # 设置x轴标签名
+    plt.xlabel("食堂名称")
+    # 设置y轴标签名
+    plt.ylabel("消费金额")
+    # 显示
+    plt.show()
 
 # 教学楼通过和食堂的关系
 def money_learn():
@@ -270,5 +280,6 @@ if __name__ == '__main__':
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
+    sex()
     # major()
-    money_learn()
+    # money_learn()
