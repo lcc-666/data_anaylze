@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="数据获取完成">
+    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="完成专业和性别分析">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/sex.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/sex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpl.py" beforeDir="false" afterPath="$PROJECT_DIR$/mpl.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +191,8 @@
       <workItem from="1668653941073" duration="1324000" />
       <workItem from="1669345060447" duration="3609000" />
       <workItem from="1669549360841" duration="4813000" />
-      <workItem from="1669554362109" duration="328000" />
+      <workItem from="1669554362109" duration="602000" />
+      <workItem from="1669712529638" duration="1950000" />
     </task>
     <task id="LOCAL-00001" summary="简单修改">
       <created>1667963316710</created>
@@ -229,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669553209294</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="完成专业和性别分析">
+      <created>1669554831057</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669554831057</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,17 +258,11 @@
     <MESSAGE value="添加相关性算法分析" />
     <MESSAGE value="添加性别消费分析" />
     <MESSAGE value="数据获取完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据获取完成" />
+    <MESSAGE value="完成专业和性别分析" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成专业和性别分析" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/mpl.py</url>
-          <line>186</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -272,7 +273,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1669554675709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1669714468686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$ui.coverage" NAME="ui Coverage Results" MODIFIED="1666962337716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$relevance.coverage" NAME="relevance Coverage Results" MODIFIED="1668600760486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

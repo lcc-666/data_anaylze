@@ -25,6 +25,8 @@ from relevance import conn
 
 import copy
 
+import numpy as np
+
 
 
 
@@ -253,12 +255,50 @@ def money_learn():
     data_sql="""
     SELECT Dept, SUBSTRING(Address,1,CHAR_LENGTH(Address)-4) as Address  
     FROM `data`.money_learn
-    limit 10000;
     """
     data=pd.read_sql(data_sql,conn)
     for item in zip(data["Dept"],data["Address"]):
         food[map[item[0]]][item[0]][item[1]] += 1
-    print()
+
+
+    tick_label=list(Dept["Dept"])
+    x = np.arange(5)
+    y1=[]
+    y2=[]
+    y3=[]
+    y4=[]
+    y5=[]
+    for item in food:
+        y1.append(list(item.values())[0][Address["Address"][0]])
+        y2.append(list(item.values())[0][Address["Address"][1]])
+        y3.append(list(item.values())[0][Address["Address"][2]])
+        y4.append(list(item.values())[0][Address["Address"][3]])
+        y5.append(list(item.values())[0][Address["Address"][4]])
+
+    bar_width=0.1
+    plt.bar(x,y1,bar_width,label=Address["Address"][0])
+    plt.bar(x+bar_width,y2,bar_width,label=Address["Address"][1])
+    plt.bar(x+bar_width*2,y3,bar_width,label=Address["Address"][2])
+    plt.bar(x+bar_width*3,y4,bar_width,label=Address["Address"][3])
+    plt.bar(x+bar_width*4,y5,bar_width,label=Address["Address"][4])
+
+
+    plt.legend()
+    plt.xticks(x + bar_width / 2, tick_label)
+    # plt.show()
+    figfile = BytesIO()
+    plt.savefig(figfile, format='png')
+    figfile.seek(0)
+    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+
+    # 保存为.html
+    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    filename = './html/money_learn.html'
+    with open(filename, 'w') as f:
+        f.write(html)
+
+
 
 
 
@@ -280,6 +320,6 @@ if __name__ == '__main__':
     # 日均消费
     # daysql = "SELECT SUM(Money)/30 ,Dept  FROM `data`.food  GROUP BY Dept  ;"
     # avgday(daysql)
-    sex()
+    # sex()
     # major()
-    # money_learn()
+    money_learn()
