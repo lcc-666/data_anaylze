@@ -1,8 +1,6 @@
-import base64
+import matplotlib
 
 from sql import getsql
-
-import matplotlib
 
 matplotlib.use('TkAgg')
 
@@ -17,8 +15,6 @@ from matplotlib.font_manager import FontProperties
 
 font = FontProperties(fname='simhei.ttf')
 
-from io import BytesIO
-
 import pandas as pd
 
 from relevance import conn
@@ -26,8 +22,6 @@ from relevance import conn
 import copy
 
 import numpy as np
-
-
 
 
 # 柱状图模版
@@ -48,6 +42,7 @@ def muban(res):
 # 山西农业大学食堂消费平均值
 def avg(sql):
     res = getsql(sql)
+    data = pd.read_sql(sql, conn)
     muban(res)
 
     # 设置图片名称
@@ -62,8 +57,10 @@ def avg(sql):
 
 # 山西农业大学食堂总收入
 def Sum(sql):
-    res = getsql(sql)
-    muban(res)
+    # res = getsql(sql)
+    res_data = pd.read_sql(sql, conn)
+    # muban(res)
+    print()
 
     # 设置图片名称
     plt.title("山西农业大学食堂总消费")
@@ -121,8 +118,11 @@ def avgday(sql):
     y4 = four.values()
     y5 = five.values()
     y6 = teacher.values()
+    #
+    # for item in [y1,y2,y3,y4,y5,y6]:
+    #     print([list(item)[0],list(item)[4],list(item)[9],list(item)[14],list(item)[19],list(item)[24],list(item)[29]])
 
-    plt.figure(figsize=(12,8))
+    plt.figure(figsize=(12, 8))
 
     plt.plot(x, list(y1), label="第一食堂")
     plt.plot(x, list(y2), label="第二食堂")
@@ -141,20 +141,19 @@ def avgday(sql):
     # plt.annotate("", (27, 7000), (17, 3000), arrowprops=dict(width=3, headwidth=5, headlength=5))
 
     plt.legend()
-    #plt.show()
+    plt.show()
 
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)
-    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
-    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
-
-    # 保存为.html
-    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
-    filename = './html/dayavg.html'
-    with open(filename, 'w') as f:
-        f.write(html)
-
+    # figfile = BytesIO()
+    # plt.savefig(figfile, format='png')
+    # figfile.seek(0)
+    # figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    # figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+    #
+    # # 保存为.html
+    # html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    # filename = './html/dayavg.html'
+    # with open(filename, 'w') as f:
+    #     f.write(html)
 
 
 # 食堂消费占比
@@ -166,31 +165,32 @@ def rate(sql):
     ex = [0.05 for _ in range(6)]
     plt.pie(money_dict.values(), explode=ex, labels=money_dict.keys(), autopct='%1.1f%%')
 
-    #plt.show()
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)
-    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
-    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+    plt.show()
+    # figfile = BytesIO()
+    # plt.savefig(figfile, format='png')
+    # figfile.seek(0)
+    # figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    # figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+    #
+    # # 保存为.html
+    # html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    # filename = 'png.html'
+    # with open(filename, 'w') as f:
+    #     f.write(html)
 
-    # 保存为.html
-    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
-    filename = 'png.html'
-    with open(filename, 'w') as f:
-        f.write(html)
 
 def sex():
-    sex_sql="""
+    sex_sql = """
       SELECT Sex,SUM(Money) as Money
     FROM `data`.sex_marjor sm 
    Group By Sex;
     """
-    sex_data=pd.read_sql(sex_sql,conn)
-    man=sex_data["Money"][0]
-    woman=sex_data["Money"][1]
+    sex_data = pd.read_sql(sex_sql, conn)
+    man = sex_data["Money"][0]
+    woman = sex_data["Money"][1]
     ex = [0.05 for _ in range(2)]
     plt.pie(
-        [man,woman],
+        [man, woman],
         explode=ex,
         labels=list(sex_data["Sex"]),
         autopct='%.2f%%')
@@ -207,67 +207,72 @@ def sex():
     # with open(filename, 'w') as f:
     #     f.write(html)
 
+
 # 专业消费占比
 def major():
-    major_sql="""
+    major_sql = """
     SELECT SUM(Money) as Money ,Major  
     FROM `data`.sex_marjor  sm 
     GROUP BY Major 
-   ORDER BY Money 
-  LIMIT 10;
+   ORDER BY Money DESC
+  LIMIT 5;
     """
-    data=pd.read_sql(major_sql,conn)
-    major_data=list(zip(data["Money"],data["Major"]))
-    muban(major_data)
-    plt.title("山西农业大学各专业食堂消费")
-    # 设置x轴标签名
-    plt.xlabel("食堂名称")
-    # 设置y轴标签名
-    plt.ylabel("消费金额")
-    # 显示
-    plt.show()
+    data = pd.read_sql(major_sql, conn)
+    major_data = list(zip(data["Money"], data["Major"]))
+    for item in data["Money"]:
+        print(item)
+
+    print()
+
+    # muban(major_data)
+    # plt.title("山西农业大学各专业食堂消费")
+    # # 设置x轴标签名
+    # plt.xlabel("食堂名称")
+    # # 设置y轴标签名
+    # plt.ylabel("消费金额")
+    # # 显示
+    # plt.show()
+
 
 # 教学楼通过和食堂的关系
 def money_learn():
-    Dept_sql="""
+    Dept_sql = """
     SELECT DISTINCT Dept 
     FROM `data`.money_learn ml ;
     """
-    Address_sql="""
+    Address_sql = """
     SELECT DISTINCT SUBSTRING(Address,1,CHAR_LENGTH(Address)-4) as Address 
     FROM `data`.money_learn ml ;
     """
-    Dept=pd.read_sql(Dept_sql,conn)
-    Address=pd.read_sql(Address_sql,conn)
-    food=[]
-    Dept_list={}
-    map={}
+    Dept = pd.read_sql(Dept_sql, conn)
+    Address = pd.read_sql(Address_sql, conn)
+    food = []
+    Dept_list = {}
+    Money_map = {}
     count = 0
     for Add in Address["Address"]:
-        Dept_list[Add]=0
+        Dept_list[Add] = 0
 
     for item in Dept["Dept"]:
-        food.append({item:copy.deepcopy(Dept_list)})
-        map[item]=count
-        count+=1
+        food.append({item: copy.deepcopy(Dept_list)})
+        Money_map[item] = count
+        count += 1
 
-
-    data_sql="""
+    data_sql = """
     SELECT Dept, SUBSTRING(Address,1,CHAR_LENGTH(Address)-4) as Address  
     FROM `data`.money_learn
     """
-    data=pd.read_sql(data_sql,conn)
-    for item in zip(data["Dept"],data["Address"]):
-        food[map[item[0]]][item[0]][item[1]] += 1
+    data = pd.read_sql(data_sql, conn)
+    for item in zip(data["Dept"], data["Address"]):
+        food[Money_map[item[0]]][item[0]][item[1]] += 1
 
-
-    tick_label=list(Dept["Dept"])
+    tick_label = list(Dept["Dept"])
     x = np.arange(5)
-    y1=[]
-    y2=[]
-    y3=[]
-    y4=[]
-    y5=[]
+    y1 = []
+    y2 = []
+    y3 = []
+    y4 = []
+    y5 = []
     for item in food:
         y1.append(list(item.values())[0][Address["Address"][0]])
         y2.append(list(item.values())[0][Address["Address"][1]])
@@ -275,37 +280,27 @@ def money_learn():
         y4.append(list(item.values())[0][Address["Address"][3]])
         y5.append(list(item.values())[0][Address["Address"][4]])
 
-    bar_width=0.1
-    plt.bar(x,y1,bar_width,label=Address["Address"][0])
-    plt.bar(x+bar_width,y2,bar_width,label=Address["Address"][1])
-    plt.bar(x+bar_width*2,y3,bar_width,label=Address["Address"][2])
-    plt.bar(x+bar_width*3,y4,bar_width,label=Address["Address"][3])
-    plt.bar(x+bar_width*4,y5,bar_width,label=Address["Address"][4])
-
+    bar_width = 0.1
+    plt.bar(x, y1, bar_width, label=Address["Address"][0])
+    plt.bar(x + bar_width, y2, bar_width, label=Address["Address"][1])
+    plt.bar(x + bar_width * 2, y3, bar_width, label=Address["Address"][2])
+    plt.bar(x + bar_width * 3, y4, bar_width, label=Address["Address"][3])
+    plt.bar(x + bar_width * 4, y5, bar_width, label=Address["Address"][4])
 
     plt.legend()
     plt.xticks(x + bar_width / 2, tick_label)
-    # plt.show()
-    figfile = BytesIO()
-    plt.savefig(figfile, format='png')
-    figfile.seek(0)
-    figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
-    figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
-
-    # 保存为.html
-    html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
-    filename = './html/money_learn.html'
-    with open(filename, 'w') as f:
-        f.write(html)
-
-
-
-
-
-
-
-
-
+    plt.show()
+    # figfile = BytesIO()
+    # plt.savefig(figfile, format='png')
+    # figfile.seek(0)
+    # figdata_png = base64.b64encode(figfile.getvalue())  # 将图片转为base64
+    # figdata_str = str(figdata_png, "utf-8")  # 提取base64的字符串，不然是b'xxx'
+    #
+    # # 保存为.html
+    # html = '<img src=\"data:image/png;base64,{}\"/>'.format(figdata_str)
+    # filename = './html/money_learn.html'
+    # with open(filename, 'w') as f:
+    #     f.write(html)
 
 
 if __name__ == '__main__':

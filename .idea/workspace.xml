@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="完成专业和性别分析">
+    <list default="true" id="8958918c-5e60-4686-86cf-e832f970e288" name="Changes" comment="完成教学楼和食堂分析">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dayavg.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dayavg.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mpl.py" beforeDir="false" afterPath="$PROJECT_DIR$/mpl.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,16 +33,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/chaoge/emvironment/spider&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/chaoge/emvironment/spider",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.mpl">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="data_anaylze" />
@@ -54,6 +68,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data_anaylze" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,6 +189,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.mpl" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.relevance" />
         <item itemvalue="Python.ui" />
         <item itemvalue="Python.package" />
@@ -192,7 +229,13 @@
       <workItem from="1669345060447" duration="3609000" />
       <workItem from="1669549360841" duration="4813000" />
       <workItem from="1669554362109" duration="602000" />
-      <workItem from="1669712529638" duration="1950000" />
+      <workItem from="1669712529638" duration="10171000" />
+      <workItem from="1669774277193" duration="7873000" />
+      <workItem from="1670396258585" duration="579000" />
+      <workItem from="1670423302460" duration="26000" />
+      <workItem from="1672218000405" duration="645000" />
+      <workItem from="1672221293554" duration="483000" />
+      <workItem from="1672312887188" duration="882000" />
     </task>
     <task id="LOCAL-00001" summary="简单修改">
       <created>1667963316710</created>
@@ -236,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669554831057</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="完成教学楼和食堂分析">
+      <created>1669714690808</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669714690808</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +309,8 @@
     <MESSAGE value="添加性别消费分析" />
     <MESSAGE value="数据获取完成" />
     <MESSAGE value="完成专业和性别分析" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成专业和性别分析" />
+    <MESSAGE value="完成教学楼和食堂分析" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成教学楼和食堂分析" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -273,7 +324,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1669714468686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/data_anaylze$mpl.coverage" NAME="mpl Coverage Results" MODIFIED="1672313528186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$ui.coverage" NAME="ui Coverage Results" MODIFIED="1666962337716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/data_anaylze$relevance.coverage" NAME="relevance Coverage Results" MODIFIED="1668600760486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
